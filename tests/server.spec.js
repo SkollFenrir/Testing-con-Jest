@@ -36,7 +36,7 @@ describe('Operaciones CRUD de cafes', () => {
 		const { statusCode} = await request(server)
 			.put(`/cafes/${secondId}`)
 			.send(cafe);
-		console.log(firstId, secondId);
+
 		expect(statusCode).toBe(400);
 	});
 });
