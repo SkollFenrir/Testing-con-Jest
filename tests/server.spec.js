@@ -30,12 +30,13 @@ describe('Operaciones CRUD de cafes', () => {
 	});
 
 	it('Obteniendo un status 400, se intenta actualizar con un id enviado en parametros que no corresponde con id del payload', async () => {
-		const badId = 8;
-		const cafe = { id: badId, nombre: 'Nuevo café' };
-		const { statusCode, body } = await request(server)
-			.put(`/cafes/3`)
+		const firstId = Math.floor(Math.random()*999);
+		const secondId = Math.floor(Math.random()*555)
+		const cafe = { id: firstId, nombre: 'Café random' };
+		const { statusCode} = await request(server)
+			.put(`/cafes/${secondId}`)
 			.send(cafe);
-		console.log(body);
+		console.log(firstId, secondId);
 		expect(statusCode).toBe(400);
 	});
 });
